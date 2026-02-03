@@ -51,6 +51,15 @@ Api routes to add
 Route::get('/bloque', [BloqueController::class, 'listBloques']);
 Route::get('/bloque/{id}', [BloqueController::class, 'listBloque']);
 
+Route::get('/plan', [PlanController::class, 'listPlans']);
+
+Route::get('/sesion', [SesionController::class, 'listSesiones']);
+Route::get('/sesion/{id}', [SesionController::class, 'listSesion']);
+
+Route::get('/resultado/{id}', [ResultadoController::class, 'listPlans']);
+
+Route::get('/sesionbloque', [SesionBloqueController::class, 'listPlans']);
+
 /*
 
  # ----- POST -----
