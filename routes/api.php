@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\BloqueController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -32,3 +34,41 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // Route::get('/api/articles/{article}', [ArticleController::class, 'getArticleAPI'])->name('articles.getArticle');
 // Route::delete('/api/articles/{article}', [ArticleController::class, 'deleteArticleAPI'])->name('articles.deleteArticle');
 
+/*
+Api routes to add
+
+ # ----- GET -----
+  /bloque
+  /bloque/{id}
+  /plan
+  /sesion
+  /sesion/{id}
+  /resultado/{id}
+  /sesionbloque
+
+*/
+
+Route::get('/bloque', [BloqueController::class, 'test']);
+
+/*
+
+ # ----- POST -----
+  /register
+  /login
+  /logout
+  /bloque/crear
+  /plan/crear
+  /sesion/crear
+  /resultado/crear
+  /sesionbloque/crear
+
+ # ----- PUT -----
+  /plan/{id}
+
+ # ----- DELETE -----
+  /bloque/{id}/eliminar
+  /plan/{id}
+  /sesion/{id}
+  /sesionbloque/{id}
+
+*/
