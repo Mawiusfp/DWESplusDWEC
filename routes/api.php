@@ -48,7 +48,8 @@ Api routes to add
 
 */
 
-Route::get('/bloque', [BloqueController::class, 'test']);
+Route::get('/bloque', [BloqueController::class, 'listBloques']);
+Route::get('/bloque/{id}', [BloqueController::class, 'listBloque']);
 
 /*
 
