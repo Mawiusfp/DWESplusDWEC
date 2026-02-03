@@ -2,7 +2,10 @@
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\BloqueController;
-
+use App\Http\Controllers\PlanController;
+use App\Http\Controllers\SesionController;
+use App\Http\Controllers\ResultadoController;
+use App\Http\Controllers\SesionBloqueController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,7 +61,7 @@ Route::get('/sesion/{id}', [SesionController::class, 'listSesion']);
 
 Route::get('/resultado/{id}', [ResultadoController::class, 'listPlans']);
 
-Route::get('/sesionbloque', [SesionBloqueController::class, 'listPlans']);
+Route::get('/sesionbloque', [SesionBloqueController::class, 'listSesioneBloques']);
 
 /*
 
