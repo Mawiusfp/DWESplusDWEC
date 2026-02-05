@@ -6,6 +6,7 @@ use App\Http\Controllers\PlanController;
 use App\Http\Controllers\SesionController;
 use App\Http\Controllers\ResultadoController;
 use App\Http\Controllers\SesionBloqueController;
+use App\Http\Controllers\CiclistaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -75,6 +76,12 @@ Route::get('/sesionbloque', [SesionBloqueController::class, 'listSesioneBloques'
   /resultado/crear
   /sesionbloque/crear
 
+*/
+
+Route::post('/sesion', [SesionController::class, 'createSesion']);
+Route::post('/ciclista', [CiclistaController::class, 'signUp']);
+
+/*
  # ----- PUT -----
   /plan/{id}
 

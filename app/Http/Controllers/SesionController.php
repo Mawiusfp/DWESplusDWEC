@@ -22,4 +22,10 @@ class SesionController extends Controller
         ]);
     }
 
+    public function createSesion(Request $request)
+    {
+        return response()->json($request->all());
+    }
+
+
 }

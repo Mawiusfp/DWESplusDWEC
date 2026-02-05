@@ -20,7 +20,7 @@ class AuthController extends Controller
         ]);
 
         if (Auth::attempt($credentials)) {
-            $request->session()->regenerate(); // important security step
+            $request->session()->regenerate();
 
             return redirect()->route('articles.index')
                 ->with('success', 'Logged in successfully.');
@@ -39,4 +39,5 @@ class AuthController extends Controller
 
         return redirect('/login');
     }
+
 }

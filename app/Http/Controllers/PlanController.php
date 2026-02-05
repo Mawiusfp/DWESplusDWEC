@@ -12,4 +12,8 @@ class PlanController extends Controller
             'ok' => 'It works'
         ]);
     }
+
+    public function insertPlan(Request $request) {
+        
+    }
 }
