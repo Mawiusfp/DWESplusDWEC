@@ -13,6 +13,7 @@ docker compose exec app -it dawapp artisan make:migration addedauthor
 ====
 
 # Dicta que archivos añadir (. = TODO ; si quieres añadir solo 1, pon que 1 es)
+# Para subir SOLO este archivo he hecho: git add 'commands to remember' ; git commit -m "fuera el git ignore" ; git push 
 git add . ; 
 
 # Añade al repositorio local (Stash)
