@@ -8,7 +8,7 @@ class CreateTipoComponenteTable extends Migration
 {
     public function up()
     {
-        Schema::create('tipo_componente', function (Blueprint $table) {
+        Schema::create('tipos_componente', function (Blueprint $table) {
             $table->id();
             $table->string('nombre', 50)->unique();
             $table->string('descripcion', 255)->nullable();
@@ -18,6 +18,6 @@ class CreateTipoComponenteTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('tipo_componente');
+        Schema::dropIfExists('tipos_componente');
     }
 }

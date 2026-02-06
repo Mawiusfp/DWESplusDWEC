@@ -8,11 +8,11 @@ class CreateEntrenamientoTable extends Migration
 {
     public function up()
     {
-        Schema::create('entrenamiento', function (Blueprint $table) {
+        Schema::create('entrenamientos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_ciclista')->constrained('ciclista')->restrictOnDelete()->cascadeOnUpdate();
-            $table->foreignId('id_bicicleta')->constrained('bicicleta')->restrictOnDelete()->cascadeOnUpdate();
-            $table->foreignId('id_sesion')->nullable()->constrained('sesion_entrenamiento')->nullOnDelete()->cascadeOnUpdate();
+            $table->foreignId('ciclista_id')->constrained('ciclistas')->restrictOnDelete()->cascadeOnUpdate();
+            $table->foreignId('bicicleta_id')->constrained('bicicletas')->restrictOnDelete()->cascadeOnUpdate();
+            $table->foreignId('sesion_entrenamiento_id')->nullable()->constrained('sesiones_entrenamiento')->nullOnDelete()->cascadeOnUpdate();
             $table->dateTime('fecha');
             $table->time('duracion');
             $table->decimal('kilometros', 6, 2);
@@ -27,7 +27,7 @@ class CreateEntrenamientoTable extends Migration
             $table->integer('ascenso_metros')->nullable();
             $table->string('comentario', 255)->nullable();
 
-            $table->index(['id_ciclista', 'fecha'], 'idx_ciclista_fecha');
+            $table->index(['ciclista_id', 'fecha'], 'idx_ciclista_fecha');
             $table->index('fecha', 'idx_fecha');
             $table->timestamps();
         });
@@ -35,6 +35,6 @@ class CreateEntrenamientoTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('entrenamiento');
+        Schema::dropIfExists('entrenamientos');
     }
 }

@@ -8,9 +8,9 @@ class CreatePlanEntrenamientoTable extends Migration
 {
     public function up()
     {
-        Schema::create('plan_entrenamiento', function (Blueprint $table) {
+        Schema::create('planes_entrenamiento', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_ciclista')->constrained('ciclista')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('ciclista_id')->constrained('ciclistas')->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('nombre', 100);
             $table->string('descripcion', 255)->nullable();
             $table->date('fecha_inicio');
@@ -23,6 +23,6 @@ class CreatePlanEntrenamientoTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('plan_entrenamiento');
+        Schema::dropIfExists('planes_entrenamiento');
     }
 }

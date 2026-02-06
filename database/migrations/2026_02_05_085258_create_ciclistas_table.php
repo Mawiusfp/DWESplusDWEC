@@ -4,11 +4,11 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCiclistaTable extends Migration
+class CreateCiclistasTable extends Migration
 {
     public function up()
     {
-        Schema::create('ciclista', function (Blueprint $table) {
+        Schema::create('ciclistas', function (Blueprint $table) {
             $table->id();
             $table->string('nombre', 80);
             $table->string('apellidos', 80);
@@ -23,6 +23,6 @@ class CreateCiclistaTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('ciclista');
+        Schema::dropIfExists('ciclistas');
     }
 }

@@ -8,7 +8,7 @@ class CreateBloqueEntrenamientoTable extends Migration
 {
     public function up()
     {
-        Schema::create('bloque_entrenamiento', function (Blueprint $table) {
+        Schema::create('bloques_entrenamiento', function (Blueprint $table) {
             $table->id();
             $table->string('nombre', 100);
             $table->string('descripcion', 255)->nullable();
@@ -25,6 +25,6 @@ class CreateBloqueEntrenamientoTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('bloque_entrenamiento');
+        Schema::dropIfExists('bloques_entrenamiento');
     }
 }

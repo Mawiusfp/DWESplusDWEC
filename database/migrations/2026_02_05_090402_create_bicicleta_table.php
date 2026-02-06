@@ -8,7 +8,7 @@ class CreateBicicletaTable extends Migration
 {
     public function up()
     {
-        Schema::create('bicicleta', function (Blueprint $table) {
+        Schema::create('bicicletas', function (Blueprint $table) {
             $table->id();
             $table->string('nombre', 50);
             $table->enum('tipo', ['carretera', 'mtb', 'gravel', 'rodillo']);
@@ -19,6 +19,6 @@ class CreateBicicletaTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('bicicleta');
+        Schema::dropIfExists('bicicletas');
     }
 }

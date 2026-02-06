@@ -8,9 +8,9 @@ class CreateHistoricoCiclistaTable extends Migration
 {
     public function up()
     {
-        Schema::create('historico_ciclista', function (Blueprint $table) {
+        Schema::create('historicos_ciclistas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_ciclista')->constrained('ciclista')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('ciclista_id')->constrained('ciclistas')->cascadeOnDelete()->cascadeOnUpdate();
             $table->date('fecha');
             $table->decimal('peso', 5, 2)->nullable();
             $table->integer('ftp')->nullable();
@@ -20,13 +20,14 @@ class CreateHistoricoCiclistaTable extends Migration
             $table->decimal('grasa_corporal', 4, 2)->nullable();
             $table->decimal('vo2max', 4, 1)->nullable();
             $table->string('comentario', 255)->nullable();
-            $table->unique(['id_ciclista', 'fecha'], 'uq_ciclista_fecha');
+
+            $table->unique(['ciclista_id', 'fecha'], 'uq_ciclista_fecha');
             $table->timestamps();
         });
     }
 
     public function down()
     {
-        Schema::dropIfExists('historico_ciclista');
+        Schema::dropIfExists('historicos_ciclistas');
     }
 }

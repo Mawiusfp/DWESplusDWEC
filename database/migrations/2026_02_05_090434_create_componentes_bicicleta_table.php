@@ -10,8 +10,8 @@ class CreateComponentesBicicletaTable extends Migration
     {
         Schema::create('componentes_bicicleta', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_bicicleta')->constrained('bicicleta')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('id_tipo_componente')->constrained('tipo_componente')->restrictOnDelete()->cascadeOnUpdate();
+            $table->foreignId('bicicleta_id')->constrained('bicicletas')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('tipo_componente_id')->constrained('tipos_componente')->restrictOnDelete()->cascadeOnUpdate();
             $table->string('marca', 50);
             $table->string('modelo', 50)->nullable();
             $table->string('especificacion', 50)->nullable();
@@ -24,7 +24,7 @@ class CreateComponentesBicicletaTable extends Migration
             $table->boolean('activo')->default(true);
             $table->string('comentario', 255)->nullable();
 
-            $table->index(['id_bicicleta', 'id_tipo_componente', 'activo'], 'idx_componentes_activos');
+            $table->index(['bicicleta_id', 'tipo_componente_id', 'activo'], 'idx_componentes_activos');
             $table->timestamps();
         });
     }
