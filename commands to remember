@@ -10,6 +10,9 @@ docker-compose exec app php artisan db:seed
 
 docker compose exec app -it dawapp artisan make:migration addedauthor
 
+# Create a new roller
+docker-compose exec app php artisan make:controller AuthController
+
 ====
 
 # Dicta que archivos añadir (. = TODO ; si quieres añadir solo 1, pon que 1 es)

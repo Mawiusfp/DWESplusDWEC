@@ -8,7 +8,7 @@
                 <div class="card-header">Login</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('auth.authenticate') }}">
+                    <form method="POST">
                         @csrf
 
                         <div class="form-group mb-3">

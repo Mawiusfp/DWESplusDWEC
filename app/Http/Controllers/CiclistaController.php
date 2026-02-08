@@ -22,8 +22,8 @@ class CiclistaController extends Controller
         ]);
     }
 
-    public function signUp(Request $request) {
-
+    public function signUp(Request $request)
+    {
         $data = $request->validate([
             'nombre' => 'required|string|max:255',
             'apellidos' => 'required|string|max:255',
@@ -34,13 +34,13 @@ class CiclistaController extends Controller
             'password' => 'required|string|min:6',
         ]);
 
-        Ciclista::create($data);
+        $ciclista = Ciclista::create($data);
 
         return response()->json([
-            'message' => 'SICLISTA createao',
-            'data' => $data
-        ]);
-
+            'message' => 'Ciclista creado',
+            'data' => $ciclista
+        ], 201);
     }
+
 
 }

@@ -4,15 +4,23 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AuthController;
 
-Route::get('/', function () {
-  $visited = DB::select('select * from places where visited = ?', [1]); 
-  $togo = DB::select('select * from places where visited = ?', [0]);
+// Route::get('/', function () {
+//   // $visited = DB::select('select * from places where visited = ?', [1]); 
+//   // $togo = DB::select('select * from places where visited = ?', [0]);
 
-  return view('travel_list', ['visited' => $visited, 'togo' => $togo ] );
-});
+//   return view('travel_list', ['visited' => $visited, 'togo' => $togo ] );
+// });
+
+// ------------------------------
+// THIS WORKS
+// ------------------------------
+// Route::get('/login', function () {
+//     return "<h1>This is the login page</h1>";
+// });
+Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
 
 // Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
-// Route::post('/login', [AuthController::class, 'authenticate'])->name('auth.authenticate');
+Route::post('/login', [AuthController::class, 'authenticate'])->name('auth.authenticate');
 
 // Route::get('/articles', [ArticleController::class, 'index'])->name('articles.index');
 // Route::get('/articles/create', [ArticleController::class, 'create'])->name('articles.create');
@@ -25,3 +33,4 @@ Route::get('/', function () {
 // Route::get('/api/articles', [ArticleController::class, 'listArticlesAPI'])->name('articles.listArticles');
 // Route::get('/api/articles/{article}', [ArticleController::class, 'getArticleAPI'])->name('articles.getArticle');
 // Route::delete('/api/articles/{article}', [ArticleController::class, 'deleteArticleAPI'])->name('articles.deleteArticle');
+
