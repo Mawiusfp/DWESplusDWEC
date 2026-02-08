@@ -40,4 +40,5 @@
 </div>
 @endsection
 
+<link rel="stylesheet" href="{{ asset('css/login.css') }}">
 <script src="{{ asset('js/login.js') }}"></script>
