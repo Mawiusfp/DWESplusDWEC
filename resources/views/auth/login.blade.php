@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+ 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -8,7 +8,7 @@
                 <div class="card-header">Login</div>
 
                 <div class="card-body">
-                    <form method="POST">
+                    <form method="POST" action="{{ route('auth.authenticate') }}">
                         @csrf
 
                         <div class="form-group mb-3">
@@ -39,3 +39,5 @@
     </div>
 </div>
 @endsection
+
+<script src="{{ asset('js/login.js') }}"></script>
