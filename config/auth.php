@@ -65,17 +65,13 @@ return [
     |
     */
 
-    'providers' => [
-        'users' => [
-            'driver' => 'eloquent',
-            'model' => App\User::class,
+        'providers' => [
+            'users' => [
+                'driver' => 'eloquent',
+                'model' => App\Models\Ciclista::class,
+            ],
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
-    ],
 
     /*
     |--------------------------------------------------------------------------

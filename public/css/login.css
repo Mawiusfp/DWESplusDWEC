@@ -17,7 +17,6 @@ body {
     justify-content: center;
 }
 
-/* ===== CARD LOGIN ===== */
 .card {
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(255, 255, 255, 0.12);
@@ -28,7 +27,6 @@ body {
     backdrop-filter: blur(10px);
 }
 
-/* ===== HEADER ===== */
 .card-header {
     background: transparent;
     border-bottom: 1px solid rgba(255, 255, 255, 0.12);
@@ -39,19 +37,16 @@ body {
     text-shadow: 0 0 10px rgba(0, 234, 255, 0.6);
 }
 
-/* ===== BODY ===== */
 .card-body {
     padding: 2.2rem 2.5rem;
 }
 
-/* ===== LABELS ===== */
 .form-label {
     color: #e5e5e5;
     font-size: 0.9rem;
     opacity: 0.85;
 }
 
-/* ===== INPUTS ===== */
 .form-control {
     background: #0f0f0f;
     border: 1px solid rgba(255, 255, 255, 0.18);
@@ -67,12 +62,10 @@ body {
     box-shadow: 0 0 8px rgba(0, 234, 255, 0.6);
 }
 
-/* PLACEHOLDER */
 .form-control::placeholder {
     color: rgba(255, 255, 255, 0.4);
 }
 
-/* ===== ERRORES ===== */
 .is-invalid {
     border-color: #ff4ecd;
 }
@@ -81,7 +74,6 @@ body {
     color: #ff4ecd;
 }
 
-/* ===== BOTÓN ===== */
 .btn-primary {
     width: 100%;
     margin-top: 0.5rem;
@@ -103,7 +95,6 @@ body {
     box-shadow: 0 0 15px rgba(168, 85, 247, 0.8);
 }
 
-/* ===== ESPACIADO ===== */
 .form-group {
     margin-bottom: 1.2rem;
 }
