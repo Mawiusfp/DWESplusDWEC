@@ -27,3 +27,8 @@ git push
 
 # --- Modo pro, todo en 1 linea"
 git add . ; git commit -m "ELCOMENTARIO" ; git push
+
+# Si no deja hacer git pull porque tienes cambios pero no los quieres subir
+git stash
+
+# Ya luego git pull

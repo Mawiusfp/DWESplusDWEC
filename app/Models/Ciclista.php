@@ -3,7 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+<<<<<<< HEAD
 use Illuminate\Notifications\Notifiable;
+=======
+>>>>>>> a66eeea384328103b389f08c40d38a4d345f8613
 
 class Ciclista extends Authenticatable
 {
@@ -18,6 +21,7 @@ class Ciclista extends Authenticatable
         'peso_base',
         'altura_base',
         'email',
+<<<<<<< HEAD
         'password'
     ];
 
@@ -25,4 +29,8 @@ class Ciclista extends Authenticatable
         'password',
         'remember_token',
     ];
+=======
+        'password',
+    ];
+>>>>>>> a66eeea384328103b389f08c40d38a4d345f8613
 }
