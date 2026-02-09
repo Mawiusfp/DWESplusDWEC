@@ -65,15 +65,6 @@ return [
     |
     */
 
-<<<<<<< HEAD
-        'providers' => [
-            'users' => [
-                'driver' => 'eloquent',
-                'model' => App\Models\Ciclista::class,
-            ],
-        ],
-
-=======
     'providers' => [
         'ciclistas' => [
             'driver' => 'eloquent',
@@ -85,7 +76,6 @@ return [
         //     'table' => 'ciclistas',
         // ],
     ],
->>>>>>> a66eeea384328103b389f08c40d38a4d345f8613
 
     /*
     |--------------------------------------------------------------------------
