@@ -7,7 +7,8 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return "<h1>Has iniciado sesion</h1><h2>Creo, no se</h2><h3>Deberia vamos</h3><p>BAstante seguro</p>";
+        return view('nav.landing_page');
     }
 
 }
+

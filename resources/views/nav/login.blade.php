@@ -25,7 +25,7 @@
         </div>
     </div>
     <div id="detallearticulo" class="column">
-        <h1>this is teh fucking login page</h1>
+        <h1>this is teh login page</h1>
     </div>
 
 

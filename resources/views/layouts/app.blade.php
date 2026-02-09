@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    <style>
+    <!-- <style>
         input:focus {
             border: 1px solid #d6d6d6 !important;
             outline: none;
@@ -272,23 +272,38 @@
             });
         }
 
-    </script>
+    </script> -->
 
 <head>
     <meta charset="UTF-8">
     <title>Mi Aplicación</title>
+    <link rel="stylesheet" href="{{ asset('css/main_navbar.css') }}">
 
     {{-- aquí puedes cargar CSS, Bootstrap, Vite, etc --}}
 </head>
-<body onload="init()">
+<body>
     <header>
         <h1>Mi Web</h1>
         {{-- Menú, navbar, etc --}}
+        <nav class="main-navbar">
+            <p>Inicio</p>
+            <p>Planes</p>
+            <p>Sesiones</p>
+            <p>Bloques</p>
+            <p>Resultados</p>
+        </nav>
     </header>
 
+    <!-- 
+    
+        This is the search thing, LEAVE IT HERE JUST IN CASE WE NEED IT, 
+                    DO NOT DELETE 
+    
     <main class="container">
         @yield('content')   {{-- → Aquí se insertan las vistas hijas --}}
-    </main>
+    </main> 
+    
+    -->
 
     <footer>
         <p>Footer aquí</p>
