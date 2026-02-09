@@ -1,9 +1,0 @@
-.main-navbar {
-    border: 1px solid black;
-    display: flex;
-    justify-content: space-around;
-}
-
-.main-navbar > p:hover {
-    text-decoration: underline;
-}

@@ -277,14 +277,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Mi Aplicación</title>
-    <link rel="stylesheet" href="{{ asset('css/main_navbar.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/base.css') }}">
     <script src="{{ asset('js/main_layout.js') }}"></script>
 
     {{-- aquí puedes cargar CSS, Bootstrap, Vite, etc --}}
 </head>
 <body>
     <header>
-        <h1>Mi Web</h1>
+        <h1>Mi App de bibicletas</h1>
         {{-- Menú, navbar, etc --}}
         <nav class="main-navbar">
             <p>Inicio</p>
