@@ -1,0 +1,7 @@
+{
+    "inicio": ["Menu inicio 1", "Menu inicio 2", "Menu inicio 3"],
+    "planes": ["Menu plan 1", "Menu plan 2", "Menu plan 3"],
+    "sesiones": ["Menu sesiones 1", "Menu sesiones 2", "Menu sesiones 3"],
+    "bloques": ["Menu bloques 1", "Menu bloques 2", "Menu bloques 3"],
+    "resultados": ["Menu resultados 1", "Menu resultados 2", "Menu resultados 3"]
+}
