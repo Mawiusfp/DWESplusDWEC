@@ -1,5 +1,127 @@
-body {
-    background: black;
-    color: white;
-    font-family: monospace;
+html, body {
+    height: 100%;
 }
+
+body {
+    display: flex;
+    flex-direction: column;
+    background: radial-gradient(circle at top, #151515, #000);
+    color: #f5f5f5;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ===== CARD LOGIN ===== */
+.card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 18px;
+    box-shadow:
+        0 0 40px rgba(0, 234, 255, 0.12),
+        inset 0 0 15px rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+}
+
+/* ===== HEADER ===== */
+.card-header {
+    background: transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    text-align: center;
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(0, 234, 255, 0.6);
+}
+
+/* ===== BODY ===== */
+.card-body {
+    padding: 2.2rem 2.5rem;
+}
+
+/* ===== LABELS ===== */
+.form-label {
+    color: #e5e5e5;
+    font-size: 0.9rem;
+    opacity: 0.85;
+}
+
+/* ===== INPUTS ===== */
+.form-control {
+    background: #0f0f0f;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 8px;
+    color: #ffffff;
+    font-family: inherit;
+}
+
+.form-control:focus {
+    background: #0f0f0f;
+    color: #ffffff;
+    border-color: #00eaff;
+    box-shadow: 0 0 8px rgba(0, 234, 255, 0.6);
+}
+
+/* PLACEHOLDER */
+.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+/* ===== ERRORES ===== */
+.is-invalid {
+    border-color: #ff4ecd;
+}
+
+.invalid-feedback {
+    color: #ff4ecd;
+}
+
+/* ===== BOTÓN ===== */
+.btn-primary {
+    width: 100%;
+    margin-top: 0.5rem;
+    padding: 0.7rem;
+
+    background: linear-gradient(135deg, #00eaff, #a855f7);
+    border: none;
+    border-radius: 10px;
+
+    color: #000;
+    font-weight: bold;
+    letter-spacing: 1px;
+
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.8);
+}
+
+/* ===== ESPACIADO ===== */
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+footer {
+    margin-top: auto;
+    background: linear-gradient(to right, #000, #111);
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 1rem;
+    text-align: center;
+    font-size: 0.85rem;
+    opacity: 0.9;
+}
+
+footer span,
+footer a {
+    color: #00eaff;
+    text-shadow: 0 0 6px rgba(0, 234, 255, 0.6);
+    text-decoration: none;
+}
+
