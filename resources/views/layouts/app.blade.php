@@ -278,6 +278,7 @@
     <meta charset="UTF-8">
     <title>Mi Aplicación</title>
     <link rel="stylesheet" href="{{ asset('css/main_navbar.css') }}">
+    <script src="{{ asset('js/main_layout.js') }}"></script>
 
     {{-- aquí puedes cargar CSS, Bootstrap, Vite, etc --}}
 </head>
