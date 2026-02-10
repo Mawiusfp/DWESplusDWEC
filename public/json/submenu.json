@@ -1,7 +1,76 @@
 {
-    "inicio": ["Menu inicio 1", "Menu inicio 2", "Menu inicio 3"],
-    "planes": ["Menu plan 1", "Menu plan 2", "Menu plan 3"],
-    "sesiones": ["Menu sesiones 1", "Menu sesiones 2", "Menu sesiones 3"],
-    "bloques": ["Menu bloques 1", "Menu bloques 2", "Menu bloques 3"],
-    "resultados": ["Menu resultados 1", "Menu resultados 2", "Menu resultados 3"]
+  "inicio": [
+    {
+      "title": "Menu inicio 1",
+      "description": "Esto es un submenu"
+    },
+    {
+      "title": "Menu inicio 2",
+      "description": "Otro submenu"
+    },
+    {
+      "title": "Menu inicio 3",
+      "description": "YYY Otro submenu"
+    }
+  ],
+
+  "planes": [
+    {
+      "title": "Menu plan 1",
+      "description": "Submenu planes 1"
+    },
+    {
+      "title": "Menu plan 2",
+      "description": "Wow un submenu planes 2"
+    },
+    {
+      "title": "Menu plan 3",
+      "description": "Waos submenu planes 3"
+    }
+  ],
+
+  "sesiones": [
+    {
+      "title": "Menu sesiones 1",
+      "description": "zz Submenu sesiones 1"
+    },
+    {
+      "title": "Menu sesiones 2",
+      "description": "zzz Submenu sesiones 2"
+    },
+    {
+      "title": "Menu sesiones 3",
+      "description": "zzzz Submenu sesiones 3"
+    }
+  ],
+
+  "bloques": [
+    {
+      "title": "Menu bloques 1",
+      "description": "123 Submenu bloques 1"
+    },
+    {
+      "title": "Menu bloques 2",
+      "description": "1234 Submenu bloques 2"
+    },
+    {
+      "title": "Menu bloques 3",
+      "description": "12345 Submenu bloques 3"
+    }
+  ],
+
+  "resultados": [
+    {
+      "title": "Menu resultados 1",
+      "description": "xxx Submenu resultados 1"
+    },
+    {
+      "title": "Menu resultados 2",
+      "description": "yyy Submenu resultados 2"
+    },
+    {
+      "title": "Menu resultados 3",
+      "description": "zzz Submenu resultados 3"
+    }
+  ]
 }
