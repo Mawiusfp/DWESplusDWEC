@@ -6,12 +6,9 @@
     <title>Document</title>
     <script src="{{ asset('js/login.js') }}"></script> 
     <link rel="stylesheet" href="{{ asset('css/base.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
-
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}"
 </head>
 <body>
-    
-
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -19,7 +16,7 @@
                 <div class="card-header">Login</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('auth.authenticate') }}">
+                    <form method="POST" action="{{ route('login') }}">
                         @csrf
 
                         <div class="form-group mb-3">

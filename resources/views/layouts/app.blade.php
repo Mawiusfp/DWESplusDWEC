@@ -1,318 +1,80 @@
-<!DOCTYPE html>
-<html>
-    <!-- <style>
-        input:focus {
-            border: 1px solid #d6d6d6 !important;
-            outline: none;
-        }
-        #results {
-            border: 1px solid #d6d6d6;
-            /*display: inline-block;*/
-            display: none;
-            position: absolute;
-            left: 8px;
-            margin-top: 26px;
-            width: 400px;
-            padding: 10px;
-            list-style: none;
-            z-index: 1000;
-            background-color: white;
-            border-top-width: 0px;
-            border-radius: 0 0 15px 15px;
-        }
-
-        #results li {
-            padding: 10px;
-        }
-
-        #results li:hover {
-            background-color: #d6d6d6;
-        }
-        #search {
-            width: 400px;
-            padding: 10px;
-            border-radius: 15px;
-            border: 1px solid #d6d6d6;
-        }
-        .column {
-            display: table-cell;
-            width: 45%;
-        }
-        #detallearticulo{
-            border: 1px solid gray;
-            padding: 20px;
-        }
-        #detalle_titulo
-        {
-            color: #8800FF;
-        }
-        .detalle_info {
-            display: inline-block;
-            margin-left: 5px;
-            margin-right: 5px;
-            font-size: 0.9em;
-            font-style: italic;
-            font-weight: bold;
-        }   
-        p#detalle_contenido {
-            font-size: 1.2em;
-            font-family: roboto;
-        }
-        .card{
-            margin: 10px; 
-            border-radius: 8px; 
-            transition: box-shadow 0.3s ease, transform 0.2s ease; 
-        }
-        .card:hover {
-            cursor: pointer; 
-            box-shadow: 0 8px 24px rgba(0,0,0,0.2); 
-            transform: translateY(-2px); 
-        }
-    </style>
-    <script>
-        let timeout = null;
-        var index = 1;
-        var offset = 0;
-        var limit = 5; 
-
-        function init()
-        {
-            document.getElementById('search').addEventListener('input', function (e) {
-                const query = e.target.value;
-
-                clearTimeout(timeout);
-
-                timeout = setTimeout(() => {
-                    if (query.length < 2) {
-                        document.getElementById('results').style.display="none";
-                        document.getElementById('results').innerHTML = '';
-                        return;
-                    }
-
-                    fetch(`/api/articles?q=${encodeURIComponent(query)}`)
-                        .then(res => res.json())
-                        .then(data => {
-                            const ul = document.getElementById('results');
-                            ul.innerHTML = '';
-
-                            data.forEach(article => {
-                                const li = document.createElement('li');
-                                li.textContent = article.title;
-                                ul.appendChild(li);
-                            });
-                            document.getElementById('results').style.display="inline-block";
-                        });
-                    }, 300); // debounce 300ms
-            });
-            
-            document.addEventListener('scrollend', function(e)
-            {
-                console.log("scroll end");
-                var scrollY = window.scrollY; 
-                if ( screen.height + window.scrollY >= document.body.offsetHeight-100)
-                {
-                    // añadir más articulos al div con id=container
-                    desde = document.getElementsByClassName("card mt-3").length;
-                    var xhttp = new XMLHttpRequest();
-                    xhttp.onreadystatechange = function() {
-                        if (this.readyState == 4) {
-                            if ( this.status == 200 ){
-                                // devuelve una lista de articulos
-                                var data = xhttp.responseText;
-                                // recorrer la lista y por cada articulo llamar a la funcion pintarArticulo
-                                var articulos = JSON.parse(data);
-                                console.log(articulos);
-                                for (var i=0; i<articulos.length; i++)
-                                {
-                                    pintarArticulo(articulos[i].id, articulos[i].title, articulos[i].content, articulos[i].author);
-                                } 
-                            }else{
-                                // la peticion ha terminado pero no ha devuelto codigo 200
-                                console.log("error de peticion: " + this.status);
-                            }
-                        }
-                    };
-                    xhttp.open("GET", "/api/articles?desde=" + desde + "&limit=" + limit, true);
-                    xhttp.send();
-                    console.log("Fetching data... zzzz");
-                    
-                    /*           
-                    for ( var i=0; i<5; i++)
-                    {
-                        pintarArticulo("Titulo articulo " + index, "Texto del contenido del articulo " + index, "");
-                        index++;
-                    }   
-                    */
-
-                }
-            });
-
-            var elementos_card = document.getElementsByClassName("card");
-            for( var i=0; i<elementos_card.length; i++)
-            {
-                elementos_card[i].addEventListener('click', function(e)
-                {
-                    
-                    // elementos_card[i]
-                    //articulo_1
-                    var id_text = this.id; 
-                    verDetalleArticulo(id_text.split("_")[1]); 
-                });
-            }
-
-            var botones_eliminar = document.getElementsByClassName("btn_eliminar");
-
-            for( var i=0; i<botones_eliminar.length; i++)
-            {
-                elementos_card[i].addEventListener('click', function(e)
-                {
-                    
-                    // elementos_card[i]
-                    //articulo_1
-                    var id_text = this.parentElement.parentElement.id; 
-                    
-                    // verDetalleArticulo(id_text.split("_")[1]);
-                    console.log(`Deleting ${id_text}`);
-                    
-                });
-            }
-        }
-
-        function verDetalleArticulo(id)
-        {
-            console.log("click en articulo: " + id);
-
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
-                if (this.readyState == 4) {
-                    if ( this.status == 200 ){
-                        var data = xhttp.responseText;
-                        var articulo = JSON.parse(data);
-
-                        document.getElementById("detalle_titulo_articulo").innerText = articulo.title || '';
-                        document.getElementById("detalle_contenido").innerText = articulo.body || '';
-                        document.getElementById("detalle_autor").innerText = articulo.author || '';
-                        document.getElementById("detalle_fecha_creacion").innerText = articulo.created || '';
-
-                        console.log(articulo);
-
-                    }else{
-                        // la peticion ha terminado pero no ha devuelto codigo 200
-                        console.log("error de peticion: " + this.status);
-                    }
-                }
-            };
-            xhttp.open("GET", "/api/articles/" + id, true);
-            xhttp.send();
-        }
-
-        function eliminarArticulo(id)
-        {
-            console.log("click en articulo: " + id);
-
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
-                if (this.readyState == 4) {
-                    if ( this.status == 200 ){
-
-                        var data = xhttp.responseText;
-                        var respuesta = JSON.parse(data);
-
-                        if(respuesta.status == "ok") {
-                            var card = document.getElementById("articulo_"+id);
-                            card.remove();
-                        }
-
-                    }else{
-                        // la peticion ha terminado pero no ha devuelto codigo 200
-                        console.log("error de peticion: " + this.status);
-                    }
-                }
-            };
-            xhttp.open("DELETE", "/api/articles/" + id, true);
-            xhttp.send();
-        }
-
-        function pintarArticulo( id, titulo, contenido, autor)
-        {
-            let contenedor = document.getElementById("listadoarticulos"); 
-            let articuloDiv = document.createElement("div"); 
-            articuloDiv.setAttribute("class", "card mt-3"); 
-            articuloDiv.setAttribute("id", "articulo_" + id);
-            let cardDiv = document.createElement("div"); 
-            cardDiv.setAttribute("class", "card-body");
-            articuloDiv.appendChild(cardDiv); 
-            let h3 = document.createElement("h3");
-            cardDiv.appendChild(h3);  
-            let a = document.createElement("a"); 
-            a.setAttribute("href", "");
-            a.innerText=titulo + ", " + autor; 
-            h3.appendChild(a); 
-            let p = document.createElement("p"); 
-            p.innerText = contenido; 
-            cardDiv.appendChild(p); 
-
-            let boton = document.createElement("input");
-            boton.setAttribute("type", "button");
-            boton.setAttribute("name", "Eliminar");
-            boton.setAttribute("value", "Eliminar");
-            boton.setAttribute("class", "btn_eliminar");
-            cardDiv.appendChild(boton);
-
-
-            contenedor.appendChild(articuloDiv);
-
-            deleteButton.addEventListener('click', function(e) {
-                eliminarArticulo(id);
-            });
-
-            cardDiv.addEventListener('click', function(e)
-            {
-                verDetalleArticulo(id); 
-            });
-        }
-
-    </script> -->
-
+<!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <meta charset="UTF-8">
-    <title>Mi Aplicación</title>
-    <link rel="stylesheet" href="{{ asset('css/base.css') }}">
-    <script src="{{ asset('js/Fain_layout.js') }}"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    {{-- aquí puedes cargar CSS, Bootstrap, Vite, etc --}}
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('app.name', 'Laravel') }}</title>
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h1>Mi App de bibicletas</h1>
-        {{-- Menú, navbar, etc --}}
-        <nav class="main-navbar">
-            <p>Inicio</p>
-            <p>Planes</p>
-            <p>Sesiones</p>
-            <p>Bloques</p>
-            <p>Resultados</p>
+    <div id="app">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+            <div class="container">
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    {{ config('app.name', 'Laravel') }}
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!-- Left Side Of Navbar -->
+                    <ul class="navbar-nav mr-auto">
+
+                    </ul>
+
+                    <!-- Right Side Of Navbar -->
+                    <ul class="navbar-nav ml-auto">
+                        <!-- Authentication Links -->
+                        @guest
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            </li>
+                            @if (Route::has('register'))
+                                <li class="nav-item">1
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }}
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+                    </ul>
+                </div>
+            </div>
         </nav>
-    </header>
 
-    <main>
-
-        @yield('content')
-
-    </main>
-    <!-- 
-    
-        This is the search thing, LEAVE IT HERE JUST IN CASE WE NEED IT, 
-                    DO NOT DELETE 
-    
-    <main class="container">
-        @yield('content')   {{-- → Aquí se insertan las vistas hijas --}}
-    </main> 
-    
-    -->
-
-    <footer>
-        <p>Footer aquí</p>
-    </footer>
+        <main class="py-4">
+            @yield('content')
+        </main>
+    </div>
 </body>
 </html>
