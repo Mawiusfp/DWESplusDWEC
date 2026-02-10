@@ -1,4 +1,5 @@
 
+/* Esto tomalo de ejemplo, no hace nada, como si lo borras */
 function load_document() {
     fetch('json/submenu.json')
         .then(response => response.json()
@@ -17,6 +18,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!select) return;
 
         select.addEventListener('change', function () {
+
+            /* 
+                AQUI ES DONDE HAY QUE PONER LA FUNCION ASINCRONA QUE AÑADA ELEMENTOS A PARTIR DEL JSON 
+            */
             
             console.log(id, "selected:", this.value);
         });
