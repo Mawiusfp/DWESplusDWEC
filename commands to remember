@@ -6,6 +6,12 @@ docker-compose exec app php artisan migrate
 
 docker-compose exec app php artisan db:seed
 
+docker exec -it comb-db mysql -u el_usuario_pro -p
+
+UnaConstaseñaCualquieraQueQuieres?UnRascacielos?YoQuieroUn240SX
+
+use entrenamientos;
+
 ==== 
 
 docker compose exec app -it dawapp artisan make:migration addedauthor
@@ -32,3 +38,38 @@ git add . ; git commit -m "ELCOMENTARIO" ; git push
 git stash
 
 # Ya luego git pull
+
+
+
+
+
+
+
+
+
+
+# ----------
+
+docker-compose exec app composer require Laravel/ui:^2.0
+
+docker-compose exec app php artisan ui bootstrap --auth
+
+# This adds login and register... automatically?
+
+@guest
+    this is whats shown to guest user
+@else
+    this is whats shown to logged in user
+
+# Not required?
+docker-compose exec app npm install && npm run dev
+
+# force to login
+Goto home or whatever controller
+
+add this:
+
+    public function __construct(){
+        $this->middleware('auth');
+    }
+

@@ -278,7 +278,7 @@
     <meta charset="UTF-8">
     <title>Mi Aplicación</title>
     <link rel="stylesheet" href="{{ asset('css/base.css') }}">
-    <script src="{{ asset('js/main_layout.js') }}"></script>
+    <script src="{{ asset('js/Fain_layout.js') }}"></script>
 
     {{-- aquí puedes cargar CSS, Bootstrap, Vite, etc --}}
 </head>
@@ -295,6 +295,11 @@
         </nav>
     </header>
 
+    <main>
+
+        @yield('content')
+
+    </main>
     <!-- 
     
         This is the search thing, LEAVE IT HERE JUST IN CASE WE NEED IT, 

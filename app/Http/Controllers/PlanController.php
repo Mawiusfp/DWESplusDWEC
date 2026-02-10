@@ -16,4 +16,9 @@ class PlanController extends Controller
     public function insertPlan(Request $request) {
         
     }
+
+    public function index()
+    {
+        return view('nav.landing_page');
+    }
 }
