@@ -16,6 +16,8 @@ docker exec -it comb-db mysql -u el_usuario_pro -p
 UnaConstaseñaCualquieraQueQuieres?UnRascacielos?YoQuieroUn240SX
 
 use entrenamientos;
+
+select * from ciclistas limit 100;
 '''
 
 ==== 

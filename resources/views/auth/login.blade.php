@@ -40,6 +40,7 @@
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">Login</button>
                         </div>
+                        <a href="./register">¿No tienes cuenta, ¡Crea una aquí!?</a>
                     </form>
                 </div>
             </div>

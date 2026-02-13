@@ -25,10 +25,6 @@
                         <label for="inicio">Inicio</label>
 
                         <select name="inicio" id="inicio">
-                            <option value="volvo">Volvo</option>
-                            <option value="saab">Saab</option>
-                            <option value="mercedes">Mercedes</option>
-                            <option value="audi">Audi</option>
                         </select>
                     </div>
 
@@ -36,10 +32,6 @@
                         <label for="planes">Planes</label>
 
                         <select name="planes" id="planes">
-                            <option value="volvo">Volvo</option>
-                            <option value="saab">Saab</option>
-                            <option value="mercedes">Mercedes</option>
-                            <option value="audi">Audi</option>
                         </select>
                     </div>
 
@@ -47,10 +39,6 @@
                         <label for="sesiones">Sesiones</label>
 
                         <select name="sesiones" id="sesiones">
-                            <option value="volvo">Volvo</option>
-                            <option value="saab">Saab</option>
-                            <option value="mercedes">Mercedes</option>
-                            <option value="audi">Audi</option>
                         </select>
                     </div>
 
@@ -58,10 +46,6 @@
                         <label for="bloques">Bloques</label>
 
                         <select name="bloques" id="bloques">
-                            <option value="volvo">Volvo</option>
-                            <option value="saab">Saab</option>
-                            <option value="mercedes">Mercedes</option>
-                            <option value="audi">Audi</option>
                         </select>
                     </div>
 
@@ -69,10 +53,6 @@
                         <label for="resultados">Resultados</label>
 
                         <select name="resultados" id="resultados">
-                            <option value="volvo">Volvo</option>
-                            <option value="saab">Saab</option>
-                            <option value="mercedes">Mercedes</option>
-                            <option value="audi">Audi</option>
                         </select>
                     </div>
  

@@ -79,7 +79,7 @@ Route::get('/sesionbloque', [SesionBloqueController::class, 'listSesioneBloques'
 */
 
 Route::post('/sesion', [SesionController::class, 'createSesion']);
-Route::post('/ciclista', [CiclistaController::class, 'signUp']);
+Route::post('/register', [CiclistaController::class, 'signUp']);
 
 /*
  # ----- PUT -----
