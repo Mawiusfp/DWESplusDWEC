@@ -1,5 +1,7 @@
 ==== BORRA EL COMPOSE ANGITUO (3 CONTENEDORES) ====
 
+git config --global --add safe.directory /var/www
+
 docker compose up -d
 
 docker-compose exec app php artisan migrate
@@ -10,6 +12,9 @@ docker-compose exec app php artisan db:seed
 docker-compose exec app php artisan route:clear
 docker-compose exec app php artisan config:clear
 
+# Migrar e insertar todo
+docker-compose exec app php artisan migrate:fresh --seed
+
 '''
 docker exec -it comb-db mysql -u el_usuario_pro -p
 
@@ -17,7 +22,18 @@ UnaConstaseñaCualquieraQueQuieres?UnRascacielos?YoQuieroUn240SX
 
 use entrenamientos;
 
-select * from ciclistas limit 100;
+select * from bicicleta ;
+select * from bloque_entrenamiento ;
+select * from ciclista ;
+select * from componentes_bicicleta ;
+select * from entrenamiento ;
+select * from historico_ciclista ;
+select * from migrations ;
+select * from password_resets ;
+select * from plan_entrenamiento ;
+select * from sesion_bloque ;
+select * from sesion_entrenamiento ;
+select * from tipo_componente ;
 '''
 
 ==== 

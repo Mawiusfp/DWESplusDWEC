@@ -1,0 +1,26 @@
+1. Usuarios 
+    ○ Registro de usuario. ✅
+    ○ Inicio de sesión (login). ✅
+    ○ Cierre de sesión (logout). ✅
+2. Bloques de entrenamiento
+    ○ Crear bloque de entrenamiento.
+    ○ Ver detalle de un bloque.
+    ○ Eliminar bloque.
+    ○ Listar bloques.
+3. Sesión de bloques
+    ○ Crear sesión de bloque.
+    ○ Editar sesión de bloque.
+    ○ Eliminar sesión de bloque.
+    ○ Listar sesiones de bloques.
+4. Sesiones de entrenamiento
+    ○ Crear sesión de entrenamiento.
+    ○ Eliminar sesión de entrenamiento.
+    ○ Listar sesiones de entrenamiento.
+5. Plan de entrenamiento
+    ○ Crear plan de entrenamiento.
+    ○ Eliminar plan de entrenamiento.
+    ○ Editar plan de entrenamiento
+    ○ Listar planes de entrenamiento.
+6. Resultados de entrenamiento
+    ○ Registrar resultados de una sesión de entrenamiento.
+    ○ Consultar resultados de una sesión.
