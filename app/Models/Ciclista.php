@@ -8,7 +8,7 @@ class Ciclista extends Authenticatable
 {
     // use Notifiable;
 
-    protected $table = 'ciclistas';
+    protected $table = 'ciclista';
 
     protected $fillable = [
         'nombre',

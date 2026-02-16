@@ -32,6 +32,7 @@ class DatabaseSeeder extends Seeder
             ['nombre' => 'Luis', 'apellidos' => 'Rodríguez', 'fecha_nacimiento' => '1972-09-15', 'peso_base' => 62.0, 'altura_base' => 170, 'email' => 'test5@prueba.com', 'password' => Hash::make('prueba')],
             ['nombre' => 'Maria', 'apellidos' => 'Rodríguez', 'fecha_nacimiento' => '1972-09-15', 'peso_base' => 62.0, 'altura_base' => 170, 'email' => 'test6@prueba.com', 'password' => Hash::make('prueba')],
             ['nombre' => 'Ricardo', 'apellidos' => 'García', 'fecha_nacimiento' => '1982-09-15', 'peso_base' => 72.0, 'altura_base' => 170, 'email' => 'test7@prueba.com', 'password' => Hash::make('prueba')],
+            ['nombre' => 'user', 'apellidos' => 'test', 'fecha_nacimiento' => '1990-01-01', 'peso_base' => NULL, 'altura_base' => NULL, 'email' => 'test@test.com', 'password' => Hash::make('12345678')],
         ]);
 
         // 2. Histórico

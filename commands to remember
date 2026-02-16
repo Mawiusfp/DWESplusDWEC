@@ -22,9 +22,9 @@ UnaConstaseñaCualquieraQueQuieres?UnRascacielos?YoQuieroUn240SX
 
 use entrenamientos;
 
+select * from ciclista ;
 select * from bicicleta ;
 select * from bloque_entrenamiento ;
-select * from ciclista ;
 select * from componentes_bicicleta ;
 select * from entrenamiento ;
 select * from historico_ciclista ;
