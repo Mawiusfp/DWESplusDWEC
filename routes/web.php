@@ -1,31 +1,33 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
-
-/*
-     These are taken care of by laravel
-*/
-// Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
-// Route::post('/login', [AuthController::class, 'authenticate'])->name('auth.authenticate');
-// Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
-
-// Route::get('/', [HomeController::class, 'index'])->middleware('auth')->name('home');
-
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::middleware(['auth'])->group(function () {
 
-Route::get('/home', [HomeController::class, 'index'])
-     ->middleware('auth')
-     ->name('home');
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
 
+    Route::get('/planes', function () {
+        return view('planes');
+    })->name('planes');
 
-/*
-     IF NOT LOGGED IN GOTO LOGIN ELSE GO HOME
-*/
+    Route::get('/sesiones', function () {
+        return view('sesiones');
+    })->name('sesiones');
+
+    Route::get('/bloques', function () {
+        return view('bloques');
+    })->name('bloques');
+
+    Route::get('/resultados', function () {
+        return view('resultados');
+    })->name('resultados');
+
+});
+
 Route::get('/', function () {
     return Auth::check()
         ? redirect()->route('home')

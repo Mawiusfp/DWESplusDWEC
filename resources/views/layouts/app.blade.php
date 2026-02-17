@@ -17,64 +17,83 @@
     <link href="{{ asset('css/base.css') }}?v={{ time() }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm py-2">
-            <div class="container d-flex justify-content-between align-items-center">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
+<div id="app">
 
-                <ul class="navbar-nav ml-auto d-flex align-items-center" style="list-style: none; margin: 0; padding: 0;">
-                    @guest
+    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm py-2">
+        <div class="container d-flex justify-content-between align-items-center">
+
+            <a class="navbar-brand" href="{{ url('/') }}">
+                {{ config('app.name', 'Laravel') }}
+            </a>
+
+            <ul class="navbar-nav ml-auto d-flex align-items-center" style="list-style: none; margin: 0; padding: 0;">
+
+                @guest
+                    <li class="nav-item">
+                        <a class="btn btn-primary mx-1 px-3 py-1" href="{{ route('login') }}">
+                            {{ __('Login') }}
+                        </a>
+                    </li>
+
+                    @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="btn btn-primary mx-1 px-3 py-1" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="btn btn-primary mx-1 px-3 py-1" href="{{ route('register') }}">
+                                {{ __('Register') }}
+                            </a>
                         </li>
-                        @if (Route::has('register'))
-                            <li class="nav-item">
-                                <a class="btn btn-primary mx-1 px-3 py-1" href="{{ route('register') }}">{{ __('Register') }}</a>
-                            </li>
-                        @endif
-                    @else
-                        <li class="nav-item">
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-flex m-0 p-0">
-                                @csrf
-                                <button type="submit" class="btn btn-primary mx-1 px-3 py-1">Logout</button>
-                            </form>
-                             <nav class="main-navbar">
-                    <div>
-                        <label for="inicio">Inicio</label>
-                        <select name="inicio" id="inicio"></select>
-                    </div>
+                    @endif
+                @else
 
-                    <div>
-                        <label for="planes">Planes</label>
-                        <select name="planes" id="planes"></select>
-                    </div>
+                    <li class="nav-item d-flex align-items-center">
 
-                    <div>
-                        <label for="sesiones">Sesiones</label>
-                        <select name="sesiones" id="sesiones"></select>
-                    </div>
+                        <!-- BOTONES DE NAVEGACIÓN -->
+                        <nav class="d-flex gap-2 me-3">
 
-                    <div>
-                        <label for="bloques">Bloques</label>
-                        <select name="bloques" id="bloques"></select>
-                    </div>
+                            <a href="{{ route('home') }}" class="btn btn-outline-primary mx-1 px-3 py-1">
+                                Inicio
+                            </a>
 
-                    <div>
-                        <label for="resultados">Resultados</label>
-                        <select name="resultados" id="resultados"></select>
-                    </div>
-                </nav>
-                        </li>
-                    @endguest
-                </ul>
-            </div>
-        </nav>
+                            <a href="{{ route('planes') }}" class="btn btn-outline-primary mx-1 px-3 py-1">
+                                Planes
+                            </a>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
-    </div>
+                            <a href="{{ route('sesiones') }}" class="btn btn-outline-primary mx-1 px-3 py-1">
+                                Sesiones
+                            </a>
+
+                            <a href="{{ route('bloques') }}" class="btn btn-outline-primary mx-1 px-3 py-1">
+                                Bloques
+                            </a>
+
+                            <a href="{{ route('resultados') }}" class="btn btn-outline-primary mx-1 px-3 py-1">
+                                Resultados
+                            </a>
+
+                        </nav>
+
+                        <!-- LOGOUT -->
+                        <form id="logout-form"
+                              action="{{ route('logout') }}"
+                              method="POST"
+                              class="d-flex m-0 p-0">
+                            @csrf
+                            <button type="submit" class="btn btn-primary mx-1 px-3 py-1">
+                                Logout
+                            </button>
+                        </form>
+
+                    </li>
+
+                @endguest
+
+            </ul>
+        </div>
+    </nav>
+
+    <main class="py-4">
+        @yield('content')
+    </main>
+
+</div>
 </body>
 </html>
