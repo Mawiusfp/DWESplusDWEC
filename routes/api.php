@@ -16,8 +16,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 /*
 
  # ----- GET -----
-  /bloque
-  /bloque/{id}
+  /bloque ✅
+  /bloque/{id} ✅
   /plan
   /sesion
   /sesion/{id}
@@ -41,10 +41,10 @@ Route::get('/sesionbloque', [SesionBloqueController::class, 'listSesioneBloques'
 /*
 
  # ----- POST -----
-  /register
-  /login
-  /logout
-  /bloque/crear
+  /register ✅ (Lo hace laravel solito)
+  /login ✅ (Lo hace laravel solito)
+  /logout ✅ (Lo hace laravel solito)
+  /bloque/crear ✅
   /plan/crear
   /sesion/crear
   /resultado/crear
@@ -52,17 +52,18 @@ Route::get('/sesionbloque', [SesionBloqueController::class, 'listSesioneBloques'
 
 */
 
-Route::post('/sesion', [SesionController::class, 'createSesion']);
-Route::post('/register', [CiclistaController::class, 'signUp']);
+Route::post('/bloque/crear', [BloqueEntrenamientoController::class, 'createBloque']);
 
 /*
  # ----- PUT -----
   /plan/{id}
 
  # ----- DELETE -----
-  /bloque/{id}/eliminar
-  /plan/{id}
+  /bloque/{id}/eliminar ✅
+  /plan/{id} 
   /sesion/{id}
   /sesionbloque/{id}
 
 */
+
+Route::delete('/bloque/{id}/eliminar', [BloqueEntrenamientoController::class, 'deleteBloque']);

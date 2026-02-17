@@ -21,7 +21,7 @@ class BloqueEntrenamientoController extends Controller
                 'count' => $blukis->count()
             ], 200);
         } catch (Exception $e) {
-            return response(["message" => $e], 500);
+            return response(["message" => $e->getMessage()], 500);
         }
     }
 
@@ -33,4 +33,57 @@ class BloqueEntrenamientoController extends Controller
         }
         return response()->json(['message' => 'Not found'], 404);
     }
+
+    public function createBloque(Request $request) {
+
+        try {
+
+            $validated_data = $request->validate([
+                'nombre'            => 'required|string|max:100',
+                'tipo'              => 'required|in:rodaje,intervalos,fuerza,recuperacion,test',
+                'potencia_pct_min'  => 'nullable|numeric',
+                'potencia_pct_max'  => 'nullable|numeric',
+                'duracion_estimada' => 'nullable|date_format:H:i:s'
+            ]);
+
+            $bluki = BloqueEntrenamiento::create($validated_data);
+
+            return response()->json([
+                'success' => true, 
+                'message' => "OK", 
+                "data" => $bluki
+                ], 201);
+
+        } catch (Exception $e) {
+            return response()->json(['success' => false, 'message' => 'Error creating bloque', 'error' => $e->getMessage()], 500);
+        }
+
+    }
+
+    public function deleteBloque($id)
+    {
+        try {
+            $bloque = BloqueEntrenamiento::findOrFail($id);
+
+            $bloque->delete();
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Bloque deleted successfully'
+            ], 200);
+
+        } catch (ModelNotFoundException $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Not found'
+            ], 404);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Error deleting bloque',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+    }
+
 }
