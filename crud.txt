@@ -1,0 +1,72 @@
+
+bloque_entrenamiento
+    C           => http://localhost:8000/api/bloque
+    R
+        ALL     => http://localhost:8000/api/bloque
+        ID      => http://localhost:8000/api/bloque/9
+    U           => http://localhost:8000/api/bloque/6
+    D           => http://localhost:8000/api/bloque/7/eliminar
+
+sesion_bloque
+    C           => http://localhost:8000/api/sesionbloque
+    R           
+        ALL     => http://localhost:8000/api/sesionbloque
+        ID      => http://localhost:8000/api/sesionbloque/2
+    U           => http://localhost:8000/api/sesionbloque/9
+    D           => http://localhost:8000/api/sesionbloque/2
+sesion_entrenamiento
+    C
+    R
+        ALL     => http://localhost:8000/api/sesion
+        ID      => http://localhost:8000/api/sesion/2
+    U           => MISSING
+    D           => http://localhost:8000/api/sesion/2
+plan_entrenamiento
+    C           => http://localhost:8000/api/plan
+    R           
+        ALL     => http://localhost:8000/api/plan
+        ID      => http://localhost:8000/api/plan/1
+    U           => http://localhost:8000/api/plan/3
+    D           => http://localhost:8000/api/plan/1
+ciclista
+    C           =>          ???
+    R
+        ALL     => http://localhost:8000/api/ciclista
+        ID      => http://localhost:8000/api/ciclista/2
+    U           =>          ???
+    D           => http://localhost:8000/api/ciclista/6
+entrenamiento
+    C           => http://localhost:8000/api/entrenamiento
+    R
+        ALL     => http://localhost:8000/api/entrenamiento
+        ID      => http://localhost:8000/api/entrenamiento/2
+    U           => http://localhost:8000/api/entrenamiento/2
+    D           => http://localhost:8000/api/entrenamiento/2
+historico_ciclista
+    C           => http://localhost:8000/api/historico
+    R
+        ALL     => http://localhost:8000/api/historico
+        ID      => http://localhost:8000/api/historico/3
+    U           => http://localhost:8000/api/historico/3
+    D           => http://localhost:8000/api/historico/3
+bicicleta
+    C           => http://localhost:8000/api/bicicleta
+    R
+        ALL     => http://localhost:8000/api/bicicleta
+        ID      => http://localhost:8000/api/bicicleta/2
+    U           => http://localhost:8000/api/bicicleta/7
+    D           => http://localhost:8000/api/bicicleta/2
+componentes_bicicleta
+    C           => http://localhost:8000/api/componente
+    R           
+        ALL     => http://localhost:8000/api/componente
+        ID      => http://localhost:8000/api/componente/2
+    U           => http://localhost:8000/api/componente/19
+    D           => http://localhost:8000/api/componente/2
+tipo_componentes    
+    C           => http://localhost:8000/api/tipocomponente
+    R
+        ALL     => http://localhost:8000/api/tipocomponente
+        ID      => http://localhost:8000/api/tipocomponente/2
+    U           => http://localhost:8000/api/tipocomponente/8
+    D           => http://localhost:8000/api/tipocomponente/2

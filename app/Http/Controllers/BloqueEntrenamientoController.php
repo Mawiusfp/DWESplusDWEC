@@ -64,6 +64,44 @@ class BloqueEntrenamientoController extends Controller
 
     }
 
+    public function updateBloque(Request $request, $id)
+    {
+        try {
+            $bloque = BloqueEntrenamiento::findOrFail($id);
+            $validated_data = $request->validate([
+                'nombre'            => 'sometimes|required|string|max:100',
+                'descripcion'       => 'nullable|string|max:500',
+                'tipo'              => 'sometimes|required|in:rodaje,intervalos,fuerza,recuperacion,test',
+                'duracion_estimada' => 'nullable|date_format:H:i:s',
+                'potencia_pct_min'  => 'nullable|numeric',
+                'potencia_pct_max'  => 'nullable|numeric',
+                'pulso_pct_max'     => 'nullable|numeric',
+                'pulso_reserva_pct' => 'nullable|numeric',
+                'comentario'        => 'nullable|string|max:255',
+            ]);
+
+            $bloque->update($validated_data);
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Bloque actualizado correctamente',
+                'data'    => $bloque
+            ], 200);
+
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Bloque no encontrado'
+            ], 404);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Error al actualizar el bloque',
+                'error'   => $e->getMessage()
+            ], 500);
+        }
+    }
+
     public function deleteBloque($id)
     {
         try {
