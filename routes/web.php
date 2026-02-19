@@ -26,6 +26,14 @@ Route::middleware(['auth'])->group(function () {
         return view('resultados');
     })->name('resultados');
 
+    Route::get('/editarperfil', function () {
+        return view('editarperfil');
+    })->name('editarperfil');
+
+    Route::get('/CrearBloque', function () {
+        return view('crearbloque');
+    })->name('crearbloque');
+
 });
 
 Route::get('/', function () {

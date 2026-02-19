@@ -265,3 +265,19 @@ label, .form-label {
 @keyframes l1 {
     to { transform: rotate(1turn); }
 }
+
+.link {
+    color: #00eaff !important; /* El color de tu loader para mantener la estética */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.link:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.link:visited {
+    color: #00eaff; /* Evita que se ponga morado tras hacer click */
+}

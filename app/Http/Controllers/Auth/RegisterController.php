@@ -50,7 +50,11 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'nombre' => ['required', 'string', 'max:255'],
+            'apellidos' => ['required', 'string', 'max:255'],
+            'fecha_nacimiento' => ['required', 'date'],
+            'peso_base' => ['required', 'numeric', 'min:0'],
+            'altura_base' => ['required', 'numeric', 'min:0'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:ciclista'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -64,17 +68,14 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        // Split name into nombre and apellidos
-        $nameParts = explode(' ', $data['name']);
-        $nombre = array_shift($nameParts);
-        $apellidos = implode(' ', $nameParts);
-        
         return Ciclista::create([
-            'nombre' => $nombre,
-            'apellidos' => $apellidos,
-            'fecha_nacimiento' => '1990-01-01',
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'nombre'           => $data['nombre'],
+            'apellidos'        => $data['apellidos'],
+            'fecha_nacimiento' => $data['fecha_nacimiento'],
+            'peso_base'        => $data['peso_base'],
+            'altura_base'      => $data['altura_base'],
+            'email'            => $data['email'],
+            'password'         => Hash::make($data['password']),
         ]);
     }
 }

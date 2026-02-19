@@ -5,10 +5,11 @@
     <div class="row">
         <div class="col-md-8">
             <div class="card">
-
-                <h1>Aqui se tienen que listar y poder crear los bloques</h1>
-
                 <div id="body">
+                    <a href="./CrearBloque" class="link">Crear Bloque</a>
+
+                    <hr>
+
                     <div class="loader-container">
                         <div class="loader"></div>
                     </div>
