@@ -6,10 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class SesionBloque extends Model
 {
-    // Specify the table name
     protected $table = 'sesion_bloque';
     
-    // These are the columns that can be mass assigned
     protected $fillable = [
         'id_sesion_entrenamiento',
         'id_bloque_entrenamiento',
@@ -17,12 +15,11 @@ class SesionBloque extends Model
         'repeticiones'
     ];
     
-    // Define the datatypes for castable columns
     protected $casts = [
-        'id_sesion_entrenamiento'   => 'integer',
-        'id_bloque_entrenamiento'   => 'integer',
-        'orden'                     => 'integer',
-        'repeticiones'              => 'integer'
+        'id_sesion_entrenamiento' => 'integer',
+        'id_bloque_entrenamiento' => 'integer',
+        'orden' => 'integer',
+        'repeticiones' => 'integer'
     ];
 
     /**
@@ -30,10 +27,7 @@ class SesionBloque extends Model
      */
     public function sesion()
     {
-        return $this->belongsTo(
-            SesionEntrenamiento::class, 
-            'id_sesion_entrenamiento'
-        );
+        return $this->belongsTo(SesionEntrenamiento::class, 'id_sesion_entrenamiento');
     }
 
     /**
@@ -41,9 +35,6 @@ class SesionBloque extends Model
      */
     public function bloque()
     {
-        return $this->belongsTo(
-            BloqueEntrenamiento::class, 
-            'id_bloque_entrenamiento'
-        );
+        return $this->belongsTo(BloqueEntrenamiento::class, 'id_bloque_entrenamiento');
     }
 }

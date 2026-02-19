@@ -2,14 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 
-class Ciclista extends Authenticatable
+class Ciclista extends Model
 {
-    // use Notifiable;
-
     protected $table = 'ciclista';
-
+    
     protected $fillable = [
         'nombre',
         'apellidos',
@@ -17,15 +15,49 @@ class Ciclista extends Authenticatable
         'peso_base',
         'altura_base',
         'email',
-        'password',
+        'password'
     ];
-
+    
     protected $hidden = [
         'password',
         'remember_token',
     ];
-
+    
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        'fecha_nacimiento' => 'date',
+        'peso_base' => 'decimal:2',
+        'altura_base' => 'integer'
     ];
+
+    /**
+     * Relationship with PlanEntrenamiento
+     */
+    public function planes()
+    {
+        return $this->hasMany(PlanEntrenamiento::class, 'id_ciclista');
+    }
+
+    /**
+     * Relationship with Bicicleta
+     */
+    public function bicicletas()
+    {
+        return $this->hasMany(Bicicleta::class, 'id_ciclista');
+    }
+
+    /**
+     * Relationship with HistoricoCiclista
+     */
+    public function historico()
+    {
+        return $this->hasMany(HistoricoCiclista::class, 'id_ciclista');
+    }
+
+    /**
+     * Relationship with Entrenamiento
+     */
+    public function entrenamientos()
+    {
+        return $this->hasMany(Entrenamiento::class, 'id_ciclista');
+    }
 }

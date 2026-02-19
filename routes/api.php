@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\BloqueEntrenamientoController;
-use App\Http\Controllers\PlanController;
+use App\Http\Controllers\PlanEntrenamientoController;
 use App\Http\Controllers\SesionController;
 use App\Http\Controllers\ResultadoController;
 use App\Http\Controllers\SesionBloqueController;
@@ -18,7 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
  # ----- GET -----
   /bloque ✅
   /bloque/{id} ✅
-  /plan
+  /plan ✅
   /sesion
   /sesion/{id}
   /resultado/{id}
@@ -29,7 +29,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/bloque', [BloqueEntrenamientoController::class, 'listBloques']); // DONE
 Route::get('/bloque/{id}', [BloqueEntrenamientoController::class, 'listBloque']);  // DONE
 
-Route::get('/plan', [PlanController::class, 'listPlans']);
+Route::get('/plan', [PlanEntrenamientoController::class, 'listPlans']); // DONE
+Route::get('/plan/{id}', [PlanEntrenamientoController::class, 'listPlan']); // DONE
 
 Route::get('/sesion', [SesionController::class, 'listSesiones']);
 Route::get('/sesion/{id}', [SesionController::class, 'listSesion']);
@@ -52,8 +53,9 @@ Route::get('/sesionbloque', [SesionBloqueController::class, 'listSesioneBloques'
 
 */
 
-Route::post('/bloque/crear', [BloqueEntrenamientoController::class, 'createBloque']);
+Route::post('/bloque/crear', [BloqueEntrenamientoController::class, 'createBloque']); // DONE
 Route::post('/sesionbloque', [SesionBloqueController::class, 'createSesionBloque']); // DONE
+Route::post('/plan/crear', [PlanEntrenamientoController::class, 'createPlan']); // DONE
 
 
 /*
@@ -70,4 +72,4 @@ Route::post('/sesionbloque', [SesionBloqueController::class, 'createSesionBloque
 
 Route::delete('/bloque/{id}/eliminar', [BloqueEntrenamientoController::class, 'deleteBloque']);
 Route::delete('/sesionbloque/{id}', [SesionBloqueController::class, 'deleteSesionBloque']); // DONE
-
+Route::delete('/plan/{id}', [PlanEntrenamientoController::class, 'deletePlan']); // DONE

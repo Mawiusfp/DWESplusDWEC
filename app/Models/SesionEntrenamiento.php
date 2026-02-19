@@ -7,26 +7,23 @@ use Illuminate\Database\Eloquent\Model;
 class SesionEntrenamiento extends Model
 {
     protected $table = 'sesion_entrenamiento';
-
+    
     protected $fillable = [
         'id_plan',
         'fecha',
         'nombre',
         'descripcion',
-        'completada',
+        'completada'
     ];
-
-    // 
+    
     protected $casts = [
+        'id_plan' => 'integer',
         'fecha' => 'date',
-        'completada' => 'boolean',
+        'completada' => 'boolean'
     ];
-
-
-    /* ----- Relationships with other tables ----- */
 
     /**
-     * Relationship: A session belongs to one training plan
+     * Relationship with PlanEntrenamiento
      */
     public function plan()
     {
@@ -34,22 +31,17 @@ class SesionEntrenamiento extends Model
     }
 
     /**
-     * Relationship: A session consists of many blocks (Many-to-Many)
+     * Relationship with SesionBloque
      */
-    public function bloques()
+    public function sesionBloques()
     {
-        return $this->belongsToMany(
-            BloqueEntrenamiento::class,
-            'sesion_bloque',
-            'id_sesion_entrenamiento',
-            'id_bloque_entrenamiento'
-        )->withPivot('orden', 'repeticiones');
+        return $this->hasMany(SesionBloque::class, 'id_sesion_entrenamiento');
     }
 
     /**
-     * Relationship: A session can be linked to one actual workout result
+     * Relationship with Entrenamiento
      */
-    public function entrenamientoRealizado()
+    public function entrenamiento()
     {
         return $this->hasOne(Entrenamiento::class, 'id_sesion');
     }

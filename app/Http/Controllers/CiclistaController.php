@@ -28,9 +28,6 @@ class CiclistaController extends Controller
 
         return response()->json($ciclista, 201);
     }
-     
-    
-
     
     public function login(Request $request)
     {
