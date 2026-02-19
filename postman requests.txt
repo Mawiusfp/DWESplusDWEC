@@ -1,0 +1,26 @@
+
+
+POST | http://localhost:8000/api/bloque/crear
+
+{
+    "nombre": "Series de Potencia Z4",
+    "descripcion": "4 series de 5 minutos en zona de umbral",
+    "tipo": "intervalos",
+    "duracion_estimada": "00:45:00",
+    "potencia_pct_min": 95.00,
+    "potencia_pct_max": 105.00,
+    "pulso_pct_max": 92.00,
+    "pulso_reserva_pct": 123.00,
+    "comentario": "Mantener cadencia estable entre 85-95 rpm"
+}
+
+
+
+POST | localhost:8000/api/sesionbloque
+
+{
+    "id_sesion_entrenamiento": 1,
+    "id_bloque_entrenamiento": 1,
+    "orden": 3,
+    "repeticiones": 3
+}

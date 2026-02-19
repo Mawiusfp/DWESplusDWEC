@@ -235,3 +235,33 @@ label, .form-label {
     margin-top: 1.5rem;
     text-align: center;
 }
+
+.loader-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px 0;
+}
+
+.loader {
+    height: 80px;
+    aspect-ratio: 1;
+    padding: 10px;
+    border-radius: 50%;
+    position: relative;
+    filter: blur(2px); 
+    mask: conic-gradient(#000 0 0) content-box exclude, conic-gradient(#000 0 0);
+}
+
+.loader:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: conic-gradient(#0000 35%, #00eaff, #0000 65%);
+    animation: l1 1.5s linear infinite;
+}
+
+@keyframes l1 {
+    to { transform: rotate(1turn); }
+}

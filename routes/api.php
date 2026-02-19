@@ -22,12 +22,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
   /sesion
   /sesion/{id}
   /resultado/{id}
-  /sesionbloque
+  /sesionbloque ✅
 
 */
 
-Route::get('/bloque', [BloqueEntrenamientoController::class, 'listBloques']);
-Route::get('/bloque/{id}', [BloqueEntrenamientoController::class, 'listBloque']);
+Route::get('/bloque', [BloqueEntrenamientoController::class, 'listBloques']); // DONE
+Route::get('/bloque/{id}', [BloqueEntrenamientoController::class, 'listBloque']);  // DONE
 
 Route::get('/plan', [PlanController::class, 'listPlans']);
 
@@ -36,7 +36,7 @@ Route::get('/sesion/{id}', [SesionController::class, 'listSesion']);
 
 Route::get('/resultado/{id}', [ResultadoController::class, 'listPlans']);
 
-Route::get('/sesionbloque', [SesionBloqueController::class, 'listSesioneBloques']);
+Route::get('/sesionbloque', [SesionBloqueController::class, 'listSesioneBloques']); // DONE
 
 /*
 
@@ -53,6 +53,8 @@ Route::get('/sesionbloque', [SesionBloqueController::class, 'listSesioneBloques'
 */
 
 Route::post('/bloque/crear', [BloqueEntrenamientoController::class, 'createBloque']);
+Route::post('/sesionbloque', [SesionBloqueController::class, 'createSesionBloque']); // DONE
+
 
 /*
  # ----- PUT -----
@@ -62,8 +64,10 @@ Route::post('/bloque/crear', [BloqueEntrenamientoController::class, 'createBloqu
   /bloque/{id}/eliminar ✅
   /plan/{id} 
   /sesion/{id}
-  /sesionbloque/{id}
+  /sesionbloque/{id} ✅
 
 */
 
 Route::delete('/bloque/{id}/eliminar', [BloqueEntrenamientoController::class, 'deleteBloque']);
+Route::delete('/sesionbloque/{id}', [SesionBloqueController::class, 'deleteSesionBloque']); // DONE
+

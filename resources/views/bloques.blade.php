@@ -5,23 +5,13 @@
     <div class="row">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
-                </div>
-
-                <h1>Mi App de bicicletas</h1>
-
-                <h1>SOY EL BLADE DE LO BLUKIS</h1>
+                <h1>Aqui se tienen que listar y poder crear los bloques</h1>
 
                 <div id="body">
+                    <div class="loader-container">
+                        <div class="loader"></div>
+                    </div>
                 </div>
 
             </div>
@@ -30,4 +20,5 @@
 </div>
 
 <script src="{{ asset('js/Main_layout.js') }}"></script>
+<script src="{{ asset('js/bloques.js') }}"></script>
 @endsection

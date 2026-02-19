@@ -6,7 +6,7 @@
     <title>Document</title>
     <script src="{{ asset('js/login.js') }}"></script> 
     <link rel="stylesheet" href="{{ asset('css/base.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/login.css') }}"
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
 </head>
 <body>
 <div class="container">
@@ -40,7 +40,7 @@
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">Login</button>
                         </div>
-                        <a href="./register">¿No tienes cuenta, ¡Crea una aquí!?</a>
+                        <a href="./register" class="link">¿No tienes cuenta?, ¡Crea una aquí!</a>
                     </form>
                 </div>
             </div>

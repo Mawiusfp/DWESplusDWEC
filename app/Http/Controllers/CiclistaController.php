@@ -5,44 +5,30 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Ciclista;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Hash;
 
 class CiclistaController extends Controller
 {
-    public function listBloques()
-    {
-        return response()->json([
-            'ok' => 'Tamos listando los blukis'
-        ]);
-    }
-
-    public function listBloque($id)
-    {
-        return response()->json([
-            'ok' => 'Tamos listando el bluki ' . $id
-        ]);
-    }
-
     
     public function signUp(Request $request)
     {
         $data = $request->validate([
-            'nombre' => 'required',
-            'apellidos' => 'required',
+            'nombre' => 'required|string|max:255',
+            'apellidos' => 'required|string|max:255',
             'fecha_nacimiento' => 'required|date',
-            'peso_base' => 'required|numeric',
-            'altura_base' => 'required|numeric',
-            'email' => 'required|email|unique:ciclistas,email',
-            'password' => 'required|min:8',
+            'peso_base' => 'required|numeric|min:0',
+            'altura_base' => 'required|numeric|min:0',
+            'email' => 'required|email|unique:ciclista,email',
+            'password' => 'required|min:8|confirmed',
         ]);
 
-        $data['password'] = bcrypt($data['password']);
+        $data['password'] = Hash::make($data['password']);
 
         $ciclista = Ciclista::create($data);
 
         return response()->json($ciclista, 201);
     }
-        
+     
     
 
     
@@ -67,7 +53,4 @@ class CiclistaController extends Controller
             'email' => 'The provided credentials do not match our records.',
         ])->onlyInput('email');
     }
-    
-
-
 }

@@ -40,10 +40,14 @@ class BloqueEntrenamientoController extends Controller
 
             $validated_data = $request->validate([
                 'nombre'            => 'required|string|max:100',
+                'descripcion'       => 'nullable|string|max:500',
                 'tipo'              => 'required|in:rodaje,intervalos,fuerza,recuperacion,test',
+                'duracion_estimada' => 'nullable|date_format:H:i:s',
                 'potencia_pct_min'  => 'nullable|numeric',
                 'potencia_pct_max'  => 'nullable|numeric',
-                'duracion_estimada' => 'nullable|date_format:H:i:s'
+                'pulso_pct_max'     => 'nullable|numeric',
+                'pulso_reserva_pct' => 'nullable|numeric',
+                'comentario'        => 'nullable|string|max:255',
             ]);
 
             $bluki = BloqueEntrenamiento::create($validated_data);

@@ -24,6 +24,38 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="apellidos">{{ __('Last Names') }}</label>
+                    <input id="apellidos" type="text" class="form-control @error('apellidos') is-invalid @enderror" name="apellidos" value="{{ old('apellidos') }}" required>
+                    @error('apellidos')
+                        <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="fecha_nacimiento">{{ __('Birth Date') }}</label>
+                    <input id="fecha_nacimiento" type="date" class="form-control @error('fecha_nacimiento') is-invalid @enderror" name="fecha_nacimiento" value="{{ old('fecha_nacimiento') }}" required>
+                    @error('fecha_nacimiento')
+                        <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="peso_base">{{ __('Weight') }}</label>
+                    <input id="peso_base" type="number" class="form-control @error('peso_base') is-invalid @enderror" name="peso_base" value="{{ old('peso_base') }}" required step="0.01">
+                    @error('peso_base')
+                        <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="altura_base">{{ __('Height') }}</label>
+                    <input id="altura_base" type="number" class="form-control @error('altura_base') is-invalid @enderror" name="altura_base" value="{{ old('altura_base') }}" required step="0.01">
+                    @error('altura_base')
+                        <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                    @enderror
+                </div>
+
+                <div class="form-group">
                     <label for="email">{{ __('E-Mail Address') }}</label>
                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
                     @error('email')
