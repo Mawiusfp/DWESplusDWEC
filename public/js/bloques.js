@@ -22,8 +22,6 @@ async function append_bloque(id) {
 }
 
 function renderBloqueCard(bloque, container) {
-    // TODO
-    //      REMOVE THIS TO PREVENT XSS
     const cardHTML = `
         <div class="card" id="bloque-${bloque.id}">
             <h2>${bloque.nombre}</h2>
