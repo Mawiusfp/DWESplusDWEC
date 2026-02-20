@@ -8,6 +8,7 @@
                 <div class="card-header">{{ __('Panel de Sesiones') }}</div>
 
                 <div id="body" class="card-body">
+                    <a href="./CrearSesion" class="link">Crear Sesion</a>
                     
                     <hr>
 

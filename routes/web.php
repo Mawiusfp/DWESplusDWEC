@@ -34,6 +34,14 @@ Route::middleware(['auth'])->group(function () {
         return view('crearbloque');
     })->name('crearbloque');
 
+    Route::get('/CrearPlan', function () {
+        return view('crearplan');
+    })->name('crearplan');
+
+    Route::get('/CrearSesion', function () {
+        return view('crearsesion');
+    })->name('crearsesion');
+
 });
 
 Route::get('/', function () {
