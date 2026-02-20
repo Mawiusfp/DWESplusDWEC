@@ -11,48 +11,32 @@
 
                 <div class="card-body p-4">
                     <form id="form-crear-sesion">
+                        <div class="mb-3">
+                            <label class="fw-bold">Nombre de la Sesión</label>
+                            <input type="text" id="sesion_nombre" class="form-control" placeholder="Ej: Sweet Spot progresivo" required>
+                        </div>
+
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label class="fw-bold">Fecha de la Sesión</label>
+                                <label class="fw-bold">Fecha</label>
                                 <input type="date" id="sesion_fecha" class="form-control" required>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label class="fw-bold">Duración (minutos)</label>
-                                <input type="number" id="sesion_duracion" class="form-control" placeholder="Ej: 60" required>
+                                <label class="fw-bold">Plan de Entrenamiento</label>
+                                <select id="sesion_plan" class="form-select" required>
+                                    <option value="">Selecciona un plan</option>
+                                    </select>
                             </div>
                         </div>
 
                         <div class="mb-3">
                             <label class="fw-bold">Descripción</label>
-                            <textarea id="sesion_descripcion" class="form-control" rows="3" placeholder="Descripción de la sesión"></textarea>
+                            <textarea id="sesion_descripcion" class="form-control" rows="3" placeholder="Trabajo de umbral"></textarea>
                         </div>
 
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label class="fw-bold">Tipo de Sesión</label>
-                                <select id="sesion_tipo" class="form-select" required>
-                                    <option value="entrenamiento">Entrenamiento</option>
-                                    <option value="recovery">Recovery</option>
-                                    <option value="competicion">Competicion</option>
-                                    <option value="descanso">Descanso</option>
-                                </select>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label class="fw-bold">Intensidad</label>
-                                <select id="sesion_intensidad" class="form-select" required>
-                                    <option value="baja">Baja</option>
-                                    <option value="media">Media</option>
-                                    <option value="alta">Alta</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="fw-bold">Plan de Entrenamiento</label>
-                            <select id="sesion_plan" class="form-select">
-                                <option value="">Selecciona un plan</option>
-                                <!-- Options will be populated by JavaScript -->
-                            </select>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" id="sesion_completada" class="form-check-input">
+                            <label class="form-check-label fw-bold">¿Completada?</label>
                         </div>
 
                         <div class="d-flex justify-content-between">
@@ -68,24 +52,16 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Load plans for dropdown
     loadPlans();
 });
 
 async function loadPlans() {
     try {
-        const response = await fetch('http://localhost:8000/api/plan', {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'X-Requested-With': 'XMLHttpRequest',
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-            }
-        });
-
+        const response = await fetch('http://localhost:8000/api/plan');
         const result = await response.json();
         
-        if (response.ok && result.success) {
+        // Ajustado a la estructura de tu API: result.success y result.data
+        if (result.success) {
             const planSelect = document.getElementById('sesion_plan');
             result.data.forEach(plan => {
                 const option = document.createElement('option');
@@ -102,30 +78,21 @@ async function loadPlans() {
 document.getElementById('form-crear-sesion').addEventListener('submit', async function(e) {
     e.preventDefault();
     
+    // Mapeo exacto a los campos del Modelo: id_plan, fecha, nombre, descripcion, completada
     const data = {
-        id_ciclista: {{ Auth::check() ? Auth::user()->id : 'null' }},
+        nombre: document.getElementById('sesion_nombre').value,
+        id_plan: parseInt(document.getElementById('sesion_plan').value),
         fecha: document.getElementById('sesion_fecha').value,
-        duracion: parseInt(document.getElementById('sesion_duracion').value),
         descripcion: document.getElementById('sesion_descripcion').value,
-        tipo: document.getElementById('sesion_tipo').value,
-        intensidad: document.getElementById('sesion_intensidad').value,
-        id_plan: document.getElementById('sesion_plan').value || null,
-        nombre: "Sesión de " + new Date(document.getElementById('sesion_fecha').value).toLocaleDateString('es-ES')
+        completada: document.getElementById('sesion_completada').checked
     };
 
-    if (!data.fecha || !data.duracion) {
-        alert("Por favor, rellena los campos obligatorios (fecha y duración).");
-        return;
-    }
-
     try {
-        const endpoint = 'http://localhost:8000/api/sesion';
-        const response = await fetch(endpoint, {
+        const response = await fetch('http://localhost:8000/api/sesion', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
-                'X-Requested-With': 'XMLHttpRequest',
                 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
             },
             body: JSON.stringify(data)
@@ -133,20 +100,15 @@ document.getElementById('form-crear-sesion').addEventListener('submit', async fu
 
         const result = await response.json();
 
-        if (response.ok && result.success) {
+        if (response.ok && result.status === "success") {
             alert("¡Sesión guardada con éxito!");
-            window.location.href = '/sesiones'; // Redirect to sessions page
+            window.location.href = '/sesiones';
         } else {
-            if (result.errors) {
-                const errores = Object.values(result.errors).flat().join('\n');
-                alert("Errores:\n" + errores);
-            } else {
-                alert("Error: " + (result.message || "No se pudo guardar"));
-            }
+            alert("Error: " + (result.message || "No se pudo guardar"));
         }
 
     } catch (error) {
-        console.error("Error en la conexión:", error);
+        console.error("Error:", error);
         alert("No se pudo conectar con el servidor.");
     }
 });
