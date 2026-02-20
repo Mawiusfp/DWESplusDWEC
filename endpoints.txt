@@ -5,7 +5,7 @@ bloque_entrenamiento
         ALL     => http://localhost:8000/api/bloque
         ID      => http://localhost:8000/api/bloque/9
     U           => http://localhost:8000/api/bloque/6
-    D           => http://localhost:8000/api/bloque/7/eliminar
+    D           => http://localhost:8000/api/bloque/7
 
 sesion_bloque
     C           => http://localhost:8000/api/sesionbloque
